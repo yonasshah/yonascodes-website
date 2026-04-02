@@ -320,7 +320,7 @@ nav .w{
 .proc h4{font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:8px}
 .proc p{font-size:0.78rem;color:var(--gray-500);line-height:1.7}
 
-/* ─── TECH STACK ─── */
+/* ─── PACKAGES / TECH STACK ─── */
 .stack{padding:120px 0;background:var(--work-bg)}
 .stack .w{max-width:1200px;margin:0 auto;padding:0 40px}
 .stack-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -328,6 +328,7 @@ nav .w{
   background:var(--gray-50);border:1px solid var(--gray-200);
   border-radius:var(--radius-lg);padding:32px 28px;
   transition:all 0.35s;position:relative;overflow:hidden;
+  cursor:pointer;
 }
 .stack-card:hover{
   background:var(--white);border-color:var(--blue-100);
@@ -358,6 +359,84 @@ nav .w{
 }
 .sc-biz::before{content:'→';font-size:0.7rem}
 
+/* ─── CTA SECTION ─── */
+.cta-section{padding:100px 0;background:linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%)}
+.cta-section .w{max-width:720px;margin:0 auto;padding:0 40px}
+.cta-box{
+  background:linear-gradient(135deg, #0a0f1e 0%, #0f1a2e 50%, #0d1628 100%);
+  border-radius:24px;padding:64px 48px;text-align:center;
+  position:relative;overflow:hidden;
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 20px 60px rgba(0,0,0,0.4), 0 0 1px rgba(255,255,255,0.1) inset;
+}
+.cta-box::before{
+  content:'';position:absolute;top:-150px;right:-150px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(59,130,246,0.15),transparent 60%);
+  pointer-events:none;
+}
+.cta-box::after{
+  content:'';position:absolute;bottom:-120px;left:-120px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(20,184,166,0.12),transparent 60%);
+  pointer-events:none;
+}
+.cta-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 18px;border-radius:24px;margin-bottom:24px;
+  font-size:0.75rem;font-weight:600;letter-spacing:0.03em;
+  background:rgba(13,148,136,0.15);color:var(--teal-400);
+  border:1px solid rgba(13,148,136,0.25);
+  position:relative;z-index:2;
+}
+.cta-dot{
+  width:8px;height:8px;background:var(--teal-500);
+  border-radius:50%;animation:pulse 2.5s infinite;
+}
+.cta-box h2{
+  font-size:2.8rem;font-weight:900;letter-spacing:-0.04em;
+  color:white;margin-bottom:18px;position:relative;z-index:2;
+  line-height:1.1;
+}
+.cta-box p{
+  font-size:1.05rem;color:rgba(255,255,255,0.65);
+  max-width:540px;margin:0 auto 44px;line-height:1.75;
+  position:relative;z-index:2;
+}
+.cta-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--blue-600),var(--teal-600));
+  color:white;padding:18px 42px;border-radius:12px;
+  font-size:1.02rem;font-weight:700;text-decoration:none;
+  transition:all 0.35s cubic-bezier(0.4,0,0.2,1);
+  position:relative;z-index:2;
+  box-shadow:0 12px 40px rgba(37,99,235,0.35), 0 0 0 1px rgba(255,255,255,0.1) inset;
+  margin-bottom:48px;
+}
+.cta-primary span{display:inline-block}
+.cta-primary svg{transition:transform 0.3s}
+.cta-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 50px rgba(37,99,235,0.45), 0 0 0 1px rgba(255,255,255,0.15) inset;
+}
+.cta-primary:hover svg{transform:translateX(4px)}
+.cta-primary:active{transform:translateY(-1px)}
+.cta-features{
+  display:flex;gap:32px;justify-content:center;flex-wrap:wrap;
+  position:relative;z-index:2;
+}
+.cta-feat{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:0.88rem;color:rgba(255,255,255,0.55);
+  font-weight:500;
+}
+.cta-feat svg{
+  color:var(--teal-400);flex-shrink:0;
+  filter:drop-shadow(0 0 8px rgba(20,184,166,0.4));
+}
+
+
+
 /* ─── ABOUT ─── */
 .about{padding:120px 0;background:var(--about-bg)}
 .about .w{max-width:1200px;margin:0 auto;padding:0 40px}
@@ -368,7 +447,7 @@ nav .w{
   position:sticky;top:100px;
 }
 .av-ring{
-  width:100px;height:100px;border-radius:50%;
+  width:150px;height:150px;border-radius:50%;
   background:linear-gradient(135deg,var(--blue-500),var(--teal-500));
   padding:3px;margin:0 auto 18px;
 }
@@ -574,7 +653,7 @@ footer a{color:var(--blue-500);text-decoration:none}
   .contact-box{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-  nav .w,.hero .w,.services .w,.process .w,.stack .w,.about .w,.contact .w{padding:0 24px}
+  nav .w,.hero .w,.services .w,.process .w,.stack .w,.about .w,.contact .w,.cta-section .w{padding:0 24px}
   .nav-r{display:none}
   .mob-toggle{display:flex;align-items:center;justify-content:center}
   .mob-menu{padding:20px 24px 28px}
@@ -588,11 +667,18 @@ footer a{color:var(--blue-500);text-decoration:none}
   .fr{grid-template-columns:1fr}
   .contact-l,.contact-r,.form-success{padding:40px 28px}
   .contact-features{gap:10px}
+  .cta-box{padding:52px 36px}
+  .cta-box h2{font-size:2.2rem}
+  .cta-features{gap:20px}
 }
 @media(max-width:480px){
   .svc-grid{grid-template-columns:1fr}
   .proc-grid{grid-template-columns:1fr}
   .hero h1{font-size:2.6rem}
+  .cta-box{padding:44px 28px}
+  .cta-box h2{font-size:1.9rem}
+  .cta-primary{padding:16px 36px;font-size:0.96rem}
+  .cta-features{flex-direction:column;align-items:center;gap:14px}
 }
 </style>
 </head>
@@ -604,8 +690,8 @@ footer a{color:var(--blue-500);text-decoration:none}
   <div class="w">
     <a href="#" class="logo" aria-label="YonasCodes — Home">Yonas<span class="logo-accent">Codes</span></a>
     <div class="nav-r">
+      <a href="#work">Packages</a>
       <a href="#services">Services</a>
-      <a href="#work">Technology</a>
       <a href="#about">About</a>
       <a href="#contact" class="nav-btn">Get Started</a>
     </div>
@@ -615,8 +701,8 @@ footer a{color:var(--blue-500);text-decoration:none}
 
 <!-- Mobile menu -->
 <div class="mob-menu" id="mobMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="#work">Packages</a>
   <a href="#services">Services</a>
-  <a href="#work">Technology</a>
   <a href="#about">About</a>
   <a href="#contact" class="mob-cta">Get Started</a>
 </div>
@@ -631,34 +717,12 @@ footer a{color:var(--blue-500);text-decoration:none}
     <p class="hero-desc">I design and build custom web experiences for businesses in the Philadelphia metro. No templates. No page builders. Just clean code and sharp design built around your goals.</p>
     <div class="hero-btns">
       <a href="#contact" class="btn-blue">Start a Project →</a>
-      <a href="#work" class="btn-light">View Technology</a>
+      <a href="#work" class="btn-light">View Packages</a>
     </div>
     <div class="hero-stats">
-      <div class="h-stat"><div class="num">24<span>hr</span></div><div class="lbl">Response Time</div></div>
+      <div class="h-stat"><div class="num">100<span>%</span></div><div class="lbl">Client Satisfaction</div></div>
       <div class="h-stat"><div class="num">Full<span>Stack</span></div><div class="lbl">End-to-End Development</div></div>
-      <div class="h-stat"><div class="num">Philadelphia<span>+</span></div><div class="lbl">Based & Remote</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="w">
-    <div class="rv"><div class="stag">Services</div><h2 class="sh">What I build.</h2><p class="sp">Full-cycle development — from first conversation to launch and ongoing support.</p></div>
-    <div class="svc-tags rv">
-      <span class="svc-tag">Full-Stack Web Development</span>
-      <span class="svc-tag">Landing Pages</span>
-      <span class="svc-tag">Business Websites</span>
-      <span class="svc-tag">API Integrations</span>
-      <span class="svc-tag">Performance Optimization</span>
-    </div>
-    <div class="svc-grid">
-      <div class="svc rv"><div class="svc-icon si-blue">🏗️</div><h3>Business Websites</h3><p>Professional websites built to represent your brand, attract customers, and generate leads. Custom-designed for your industry and optimized for search engines.</p></div>
-      <div class="svc rv"><div class="svc-icon si-teal">🚀</div><h3>Landing Pages</h3><p>High-converting landing pages designed to drive a single action — whether that's booking a call, signing up, or making a purchase. Fast to build, faster to load.</p></div>
-      <div class="svc rv"><div class="svc-icon si-sky">🔄</div><h3>Website Redesigns</h3><p>Outdated site holding you back? I modernize your web presence with better design, faster performance, and improved search rankings.</p></div>
-      <div class="svc rv"><div class="svc-icon si-teal">🔗</div><h3>API Integrations</h3><p>Connect your website to payment processors, CRMs, email platforms, scheduling tools, and third-party services. Seamless data flow between your systems.</p></div>
-      <div class="svc rv"><div class="svc-icon si-blue">📈</div><h3>Performance Optimization</h3><p>Speed audits, Core Web Vitals fixes, and technical SEO improvements that get your site loading faster and ranking higher in search results.</p></div>
-      <div class="svc rv"><div class="svc-icon si-sky">🛡️</div><h3>Ongoing Support</h3><p>Maintenance plans to keep things running smoothly. Security updates, content changes, monitoring, and technical help when you need it.</p></div>
+      <div class="h-stat"><div class="num">24<span>hr</span></div><div class="lbl">Response Time</div></div>
     </div>
   </div>
 </section>
@@ -676,41 +740,85 @@ footer a{color:var(--blue-500);text-decoration:none}
   </div>
 </section>
 
-<!-- TECHNOLOGY -->
+<!-- PACKAGES -->
 <section class="stack" id="work">
   <div class="w">
-    <div class="rv"><div class="stag">Technology</div><h2 class="sh">The right tools for real results.</h2><p class="sp">Every technology I use is chosen for a reason — here's how each one directly benefits your business.</p></div>
+    <div class="rv"><div class="stag">Packages</div><h2 class="sh">Clear pricing. No surprises.</h2><p class="sp">Straightforward pricing for common projects. Custom work priced after we understand your needs.</p></div>
     <div class="stack-grid">
-      <div class="stack-card rv">
-        <div class="sc-header"><div class="sc-icon si-t">🐍</div><div class="sc-name">Django<span>Python Backend</span></div></div>
-        <p>A battle-tested backend framework used by Instagram and Spotify. Handles complex business logic, user accounts, databases, and integrations with built-in security.</p>
-        <div class="sc-biz">Enterprise-grade reliability without enterprise costs</div>
+      <div class="stack-card rv" data-package="Basic Informational Website ($300)">
+        <div class="sc-header"><div class="sc-icon si-b">📄</div><div class="sc-name">Basic Informational Website<span>Starting Point</span></div></div>
+        <p>Perfect for portfolios, personal brands, or simple business presences. Clean design, mobile-responsive, and optimized for search engines. Includes up to 5 pages and contact form.</p>
+        <div class="sc-biz" style="font-size:1.5rem;font-weight:800;color:var(--blue-600);margin-top:20px">$300</div>
       </div>
-      <div class="stack-card rv">
-        <div class="sc-header"><div class="sc-icon si-s">⚡</div><div class="sc-name">Technical SEO<span>Speed & Optimization</span></div></div>
-        <p>Optimizing every line of code for Core Web Vitals and search engine crawlability. I ensure your site loads instantly and ranks higher by default.</p>
-        <div class="sc-biz">Visibility and speed that converts visitors into customers</div>
+      <div class="stack-card rv" data-package="Small Business Website ($500)">
+        <div class="sc-header"><div class="sc-icon si-t">🏢</div><div class="sc-name">Small Business Website<span>Most Popular</span></div></div>
+        <p>Comprehensive business website with custom design, CMS integration for easy updates, service/product pages, and advanced SEO optimization. Everything you need to compete online.</p>
+        <div class="sc-biz" style="font-size:1.5rem;font-weight:800;color:var(--blue-600);margin-top:20px">$500</div>
       </div>
-      <div class="stack-card rv">
-        <div class="sc-header"><div class="sc-icon si-s">🗄️</div><div class="sc-name">SQL & NoSQL<span>Scalable Databases</span></div></div>
-        <p>Architecting data solutions using Relational systems (PostgreSQL, MySQL) for complex logic and NoSQL (MongoDB, Sanity) for flexible, high-speed content delivery.</p>
-        <div class="sc-biz">Your data is organized, secure, and optimized for performance</div>
+      <div class="stack-card rv" data-package="Ecommerce Website ($800)">
+        <div class="sc-header"><div class="sc-icon si-s">🛒</div><div class="sc-name">Ecommerce Website<span>Sell Online</span></div></div>
+        <p>Full online store with product catalog, shopping cart, secure checkout, payment processing integration, inventory management, and customer accounts. Built to drive sales.</p>
+        <div class="sc-biz" style="font-size:1.5rem;font-weight:800;color:var(--blue-600);margin-top:20px">$800</div>
       </div>
-      <div class="stack-card rv">
-        <div class="sc-header"><div class="sc-icon si-b">📝</div><div class="sc-name">Sanity CMS<span>Content Management</span></div></div>
-        <p>A modern content management system that gives you a clean, intuitive dashboard to update your own text, images, and pages — no developer needed for day-to-day changes.</p>
-        <div class="sc-biz">Update your site yourself without paying for every small change</div>
+      <div class="stack-card rv" data-package="Custom Web Application (Custom Quote)">
+        <div class="sc-header"><div class="sc-icon si-t">⚙️</div><div class="sc-name">Custom Web Application<span>Enterprise Solution</span></div></div>
+        <p>Fully custom software tailored to your specific business needs. Advanced functionality, database architecture, API integrations, user authentication, and complex business logic.</p>
+        <div class="sc-biz" style="font-size:1.5rem;font-weight:800;color:var(--blue-600);margin-top:20px">Inquire</div>
       </div>
-      <div class="stack-card rv">
-        <div class="sc-header"><div class="sc-icon si-s">🎨</div><div class="sc-name">Tailwind CSS<span>Styling System</span></div></div>
-        <p>A utility-first CSS framework that enables pixel-perfect, responsive designs. Every breakpoint is handled — your site looks polished on phones, tablets, and desktops.</p>
-        <div class="sc-biz">Consistent, professional appearance across all devices</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="w">
+    <div class="cta-box rv">
+      <h2>Ready to get started?</h2>
+      <p>Tell me about your project and I'll get back to you within 24 hours with a detailed proposal and timeline.</p>
+      <a href="#contact" class="cta-primary">
+        <span>Start a Project</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <div class="cta-features">
+        <div class="cta-feat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          Free consultation
+        </div>
+        <div class="cta-feat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          No commitment required
+        </div>
+        <div class="cta-feat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          24-hour response time
+        </div>
       </div>
-      <div class="stack-card rv">
-        <div class="sc-header"><div class="sc-icon si-s">🌐</div><div class="sc-name">Netlify<span>Hosting & Deployment</span></div></div>
-        <p>Enterprise-grade hosting with global CDN delivery, automated CI/CD pipelines from GitHub, and built-in serverless form handling for seamless user interaction.</p>
-        <div class="sc-biz">Fast, secure, and reliable global infrastructure for modern web apps</div>
+    </div>
+  </div>
+</section>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="w">
+    <div class="rv"><div class="stag">Services</div><h2 class="sh">How I help your business grow.</h2><p class="sp">Technical expertise and strategic thinking to make your web presence a competitive advantage.</p></div>
+    <div class="svc-tags rv">
+      <span class="svc-tag">Performance Optimization</span>
+      <span class="svc-tag">Technical SEO</span>
+      <span class="svc-tag">API Development</span>
+      <span class="svc-tag">Database Architecture</span>
+      <span class="svc-tag">Security Hardening</span>
+    </div>
+    <div class="svc-grid">
+      <div class="svc rv"><div class="svc-icon si-blue">⚡</div><h3>Performance & Speed</h3><p>Core Web Vitals optimization, lazy loading, image compression, and caching strategies that make your site load in under 2 seconds. Faster sites rank higher and convert better.</p></div>
+      <div class="svc rv"><div class="svc-icon si-teal">🔍</div><h3>Technical SEO</h3><p>Structured data, semantic HTML, crawlability optimization, and performance tuning that helps search engines understand and rank your content. Built-in visibility from day one.</p></div>
+      <div class="svc rv"><div class="svc-icon si-sky">🔗</div><h3>API Integration</h3><p>Connect your site to payment processors, CRMs, email platforms, booking systems, and third-party services. Seamless data flow between all your business tools.</p></div>
+      <div class="svc rv"><div class="svc-icon si-teal">🗄️</div><h3>Database Design</h3><p>Scalable data architecture that grows with your business. From simple contact forms to complex user systems, your data is organized, queryable, and secure.</p></div>
+      <div class="svc rv"><div class="svc-icon si-blue">🛡️</div><h3>Security & Compliance</h3><p>SSL certificates, input validation, XSS protection, CSRF tokens, and security headers. Your site and your users' data stay protected against common vulnerabilities.</p></div>
+      <div class="svc rv"><div class="svc-icon si-sky">🔧</div><h3>Ongoing Maintenance</h3><p>Monthly updates, security patches, performance monitoring, uptime tracking, and technical support. I keep your site running smoothly so you can focus on your business.</p></div>
     </div>
   </div>
 </section>
@@ -720,7 +828,11 @@ footer a{color:var(--blue-500);text-decoration:none}
   <div class="w">
     <div class="about-grid">
       <div class="about-card rv">
-        <div class="av-ring"><div class="av-inner">Y</div></div>
+        <div class="av-ring">
+          <div class="av-inner">
+            <img src="/profile.jfif" alt="Yonas Shah" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+          </div>
+        </div>
         <div>
           <h3>Yonas</h3>
           <div class="sub">Full-Stack Developer · Philadelphia</div>
@@ -792,16 +904,22 @@ footer a{color:var(--blue-500);text-decoration:none}
           <div class="fg"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(555) 000-0000"></div>
         </div>
         <div class="fg">
-          <label for="service">Service Needed</label>
+          <label for="service">Package / Service Needed</label>
           <select id="service" name="service" required>
-            <option value="">Select...</option>
-            <option>Business website</option>
-            <option>Landing page</option>
-            <option>Website redesign</option>
-            <option>API integration</option>
-            <option>Performance optimization</option>
-            <option>Ongoing support</option>
-            <option>Something else</option>
+            <option value="">Select a package or service...</option>
+            <optgroup label="Website Packages">
+              <option>Basic Informational Website ($300)</option>
+              <option>Small Business Website ($500)</option>
+              <option>Ecommerce Website ($800)</option>
+              <option>Custom Web Application (Custom Quote)</option>
+            </optgroup>
+            <optgroup label="Additional Services">
+              <option>Website Redesign</option>
+              <option>API Integration</option>
+              <option>Performance Optimization</option>
+              <option>Ongoing Support & Maintenance</option>
+              <option>Something Else</option>
+            </optgroup>
           </select>
         </div>
         <div class="fg"><label for="message">Project Details</label><textarea id="message" name="message" placeholder="Tell me about your project, goals, and timeline..." required></textarea></div>
@@ -822,7 +940,7 @@ footer a{color:var(--blue-500);text-decoration:none}
 
 <footer><p>DEVELOPED BY</p><p>&copy; 2026 <a href="#">YonasCodes</a></p></footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Email obfuscation
 (function(){
   var u='yonas',d='yonascodes',t='.com',full=u+'@'+d+t;
@@ -932,6 +1050,54 @@ function updateActiveNav(){
 }
 window.addEventListener('scroll',updateActiveNav);
 updateActiveNav();
+
+// Package card clicks
+(function(){
+  var packageCards=document.querySelectorAll('.stack-card[data-package]');
+  var serviceSelect=document.getElementById('service');
+  
+  packageCards.forEach(function(card){
+    card.addEventListener('click',function(){
+      var packageName=card.getAttribute('data-package');
+      
+      // Scroll to contact form
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+      
+      // Pre-select the package in the dropdown after a short delay
+      setTimeout(function(){
+        // Find and select the matching option
+        var options=serviceSelect.options;
+        for(var i=0;i<options.length;i++){
+          if(options[i].value===packageName){
+            serviceSelect.value=packageName;
+            // Add a subtle highlight effect
+            serviceSelect.style.borderColor='var(--blue-500)';
+            serviceSelect.style.boxShadow='0 0 0 3px rgba(37,99,235,0.08)';
+            setTimeout(function(){
+              serviceSelect.style.borderColor='';
+              serviceSelect.style.boxShadow='';
+            },2000);
+            break;
+          }
+        }
+        // Focus on the name field to encourage form completion
+        document.getElementById('name').focus();
+      },800);
+    });
+    
+    // Add keyboard accessibility
+    card.setAttribute('tabindex','0');
+    card.setAttribute('role','button');
+    card.setAttribute('aria-label','Select '+card.querySelector('.sc-name').textContent+' package');
+    
+    card.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+})();
 </script>
 
 </body>
