@@ -1607,16 +1607,7 @@ updateActiveNav();
     learnMoreBtn.addEventListener('click',function(e){
       e.stopPropagation();
       
-      // Close all other cards
-      packageCards.forEach(function(otherCard){
-        if(otherCard !== card && otherCard.classList.contains('expanded')){
-          otherCard.classList.remove('expanded');
-          var otherBtn=otherCard.querySelector('.sc-biz');
-          otherBtn.textContent=otherBtn.textContent.replace('Show less','Learn more').replace('Hide details','Request quote');
-        }
-      });
-      
-      // Toggle current card
+      // Toggle current card (allow multiple expanded for comparison)
       card.classList.toggle('expanded');
       if(card.classList.contains('expanded')){
         learnMoreBtn.textContent=learnMoreBtn.textContent.replace('Learn more','Show less').replace('Request quote','Hide details');
