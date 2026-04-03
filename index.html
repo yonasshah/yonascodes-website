@@ -194,7 +194,7 @@ nav .w{
 
 /* ─── HERO ─── */
 .hero{
-  padding:120px 0 70px;position:relative;overflow:hidden;
+  padding:90px 0 50px;position:relative;overflow:hidden;
   background:var(--hero-bg);
 }
 .hero::before{
@@ -315,7 +315,7 @@ select:focus-visible,
 }
 
 /* ─── SERVICES ─── */
-.services{padding:100px 0;background:var(--svc-bg)}
+.services{padding:70px 0;background:var(--svc-bg)}
 .services .w{max-width:1200px;margin:0 auto;padding:0 40px}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .svc-tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
@@ -364,7 +364,7 @@ select:focus-visible,
 .svc p{font-size:0.8rem;color:var(--gray-500);line-height:1.7}
 
 /* ─── PROCESS ─── */
-.process{padding:100px 0;background:var(--proc-bg)}
+.process{padding:70px 0;background:var(--proc-bg)}
 .process .w{max-width:1200px;margin:0 auto;padding:0 40px}
 .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
 .proc{
@@ -398,7 +398,7 @@ select:focus-visible,
 .proc p{font-size:0.82rem;color:var(--gray-500);line-height:1.7}
 
 /* ─── PACKAGES / TECH STACK ─── */
-.stack{padding:100px 0;background:var(--work-bg)}
+.stack{padding:70px 0;background:var(--work-bg)}
 .stack .w{max-width:1200px;margin:0 auto;padding:0 40px}
 .stack-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
 .stack-card{
@@ -499,7 +499,7 @@ select:focus-visible,
 
 /* ─── CTA SECTION ─── */
 .cta-section{
-  padding:100px 0;
+  padding:70px 0;
   background:linear-gradient(180deg, var(--white) 0%, #f8f9fa 100%);
   position:relative;
 }
@@ -628,10 +628,10 @@ select:focus-visible,
 
 
 /* ─── ABOUT ─── */
-.about{padding:100px 0;background:var(--about-bg)}
+.about{padding:70px 0;background:var(--about-bg)}
 
 /* ─── FAQ ─── */
-.faq{padding:100px 0;background:var(--gray-50)}
+.faq{padding:70px 0;background:var(--gray-50)}
 .faq .w{max-width:900px;margin:0 auto;padding:0 40px}
 .faq-list{display:flex;flex-direction:column;gap:16px}
 .faq-item{
@@ -740,7 +740,7 @@ select:focus-visible,
 
 /* ─── CONTACT ─── */
 .contact{
-  padding:100px 0 100px;
+  padding:70px 0 70px;
   background:var(--white);
 }
 .contact .w{max-width:1200px;margin:0 auto;padding:0 40px}
@@ -819,6 +819,19 @@ select:focus-visible,
 .fg input:focus,.fg textarea:focus,.fg select:focus{
   border-color:var(--blue-500);
   box-shadow:0 0 0 3px rgba(37,99,235,0.08);
+}
+.fg input:invalid:not(:placeholder-shown),.fg textarea:invalid:not(:placeholder-shown),.fg select:invalid:not(:placeholder-shown){
+  border-color:#ef4444;
+}
+.fg input:valid:not(:placeholder-shown),.fg textarea:valid:not(:placeholder-shown),.fg select:valid:not(:placeholder-shown){
+  border-color:#10b981;
+}
+.fg-error{
+  font-size:0.75rem;color:#ef4444;margin-top:4px;
+  display:none;font-weight:500;
+}
+.fg.error .fg-error{
+  display:block;
 }
 .fg select{
   appearance:none;-webkit-appearance:none;
@@ -1294,11 +1307,11 @@ footer::before{
         <p style="display:none;"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
         <input type="hidden" name="form-name" value="contact" />
         <div class="fr">
-          <div class="fg"><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" required></div>
+          <div class="fg"><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" required><span class="fg-error">Please enter your name</span></div>
           <div class="fg"><label for="business">Business</label><input type="text" id="business" name="business" placeholder="Business name"></div>
         </div>
         <div class="fr">
-          <div class="fg"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="you@example.com" required></div>
+          <div class="fg"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="you@example.com" required><span class="fg-error">Please enter a valid email</span></div>
           <div class="fg"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" pattern="[0-9\s\(\)\-\+\.]*" title="Please enter a valid phone number"></div>
         </div>
         <div class="fg">
@@ -1319,8 +1332,9 @@ footer::before{
               <option>Something Else</option>
             </optgroup>
           </select>
+          <span class="fg-error">Please select a service</span>
         </div>
-        <div class="fg"><label for="message">Project Details</label><textarea id="message" name="message" placeholder="Tell me about your project, goals, and timeline..." required></textarea></div>
+        <div class="fg"><label for="message">Project Details</label><textarea id="message" name="message" placeholder="Tell me about your project, goals, and timeline..." required></textarea><span class="fg-error">Please describe your project</span></div>
         <button type="submit" class="sub-btn">Send Message →</button>
       </form>
       <div class="form-success" id="formSuccess">
@@ -1480,9 +1494,45 @@ footer::before{
   var form=document.getElementById('contactForm');
   var success=document.getElementById('formSuccess');
   var sendAnother=document.querySelector('.send-another');
+  
+  // Real-time validation
+  var requiredFields=form.querySelectorAll('[required]');
+  requiredFields.forEach(function(field){
+    field.addEventListener('blur',function(){
+      validateField(field);
+    });
+  });
+  
+  function validateField(field){
+    var parent=field.closest('.fg');
+    if(!field.validity.valid){
+      parent.classList.add('error');
+    }else{
+      parent.classList.remove('error');
+    }
+  }
 
   form.addEventListener('submit',function(e){
     e.preventDefault();
+    
+    // Validate all required fields
+    var isValid=true;
+    requiredFields.forEach(function(field){
+      validateField(field);
+      if(!field.validity.valid){
+        isValid=false;
+      }
+    });
+    
+    if(!isValid){
+      // Scroll to first error
+      var firstError=form.querySelector('.fg.error');
+      if(firstError){
+        firstError.scrollIntoView({behavior:'smooth',block:'center'});
+      }
+      return;
+    }
+    
     var btn=form.querySelector('.sub-btn');
     btn.disabled=true;
     btn.textContent='Sending...';
@@ -1557,7 +1607,16 @@ updateActiveNav();
     learnMoreBtn.addEventListener('click',function(e){
       e.stopPropagation();
       
-      // Toggle current card (allow multiple expanded for comparison)
+      // Close all other cards
+      packageCards.forEach(function(otherCard){
+        if(otherCard !== card && otherCard.classList.contains('expanded')){
+          otherCard.classList.remove('expanded');
+          var otherBtn=otherCard.querySelector('.sc-biz');
+          otherBtn.textContent=otherBtn.textContent.replace('Show less','Learn more').replace('Hide details','Request quote');
+        }
+      });
+      
+      // Toggle current card
       card.classList.toggle('expanded');
       if(card.classList.contains('expanded')){
         learnMoreBtn.textContent=learnMoreBtn.textContent.replace('Learn more','Show less').replace('Request quote','Hide details');
